@@ -3,14 +3,14 @@ const { v4: uuidv4 } = require('uuid');
 const jwt = require('jsonwebtoken')
 
 AWS.config.update({
-    region: "",
-    accessKeyId: "",
-    secretAccessKey: "",
-    endpoint: "https://dynamodb. .amazonaws.com"
+    region: "us-east-1",
+    accessKeyId: "AKIAXE4QWHK2VPQFMHEJ",
+    secretAccessKey: "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",
+    endpoint: "https://dynamodb.us-east-1.amazonaws.com"
 })
 
 let docClient = new AWS.DynamoDB.DocumentClient()
-var table = "users"
+var table = "user"
 
 exports.register = async(params)=>{
     //console.log(params)
@@ -18,12 +18,8 @@ exports.register = async(params)=>{
         TableName:table,
         Item:{
             email: params.email,
-            username:params.username,
             password:params.password,
-            firstname:params.firstname,
-            lastname:params.lastname,
-            gender:params.gender,
-            age:params.age
+            color:params.color
         }
     };
     

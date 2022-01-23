@@ -1,18 +1,18 @@
 const AWS = require('aws-sdk')
 const { v4: uuidv4 } = require('uuid');
 
-
 AWS.config.update({
-    region: "",
-    accessKeyId: "",
-    secretAccessKey: "",
-    endpoint: "https://dynamodb. .amazonaws.com"
+    region: "us-east-1",
+    accessKeyId: "AKIAXE4QWHK2VPQFMHEJ",
+    secretAccessKey: "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",
+    endpoint: "https://dynamodb.us-east-1.amazonaws.com"
 })
 
 let docClient = new AWS.DynamoDB.DocumentClient()
-table = "category"
+var table = "category"
 
 exports.add = async(params)=>{
+    console.log('deneme')
     const item = {
         TableName:table,
         Item:{
@@ -21,7 +21,7 @@ exports.add = async(params)=>{
         }
     }
     try{
-        await docClient.put(params).promise()
+        await docClient.put(item).promise()
         return{
             status:true,
             message:"Kategori eklendi"
@@ -34,6 +34,7 @@ exports.add = async(params)=>{
     }
 }
 exports.single = async(params)=>{
+    console.log('geldik')
     var items = {
         TableName:table,
         Key:{
@@ -55,6 +56,7 @@ exports.single = async(params)=>{
     }
 }
 exports.fetchAll = async(params)=>{
+    console.log('geldik')
     var items = {
         TableName: table
     };
@@ -72,7 +74,7 @@ exports.fetchAll = async(params)=>{
     }
 }
 exports.update = async(params)=>{
-    var params = {
+    var items = {
         TableName:table,
         Key:{
             "id": params.id,
@@ -97,6 +99,7 @@ exports.update = async(params)=>{
     }
 }
 exports.delete = async(params)=>{
+    console.log('geldik')
     var items = {
         TableName:table,
         Key:{

@@ -1,3 +1,5 @@
+/*
+
 const AWS = require('aws-sdk')
 const { status } = require('express/lib/response')
 const { v4: uuidv4 } = require('uuid');
@@ -113,4 +115,4 @@ exports.delete = (req,res)=>{
             res.send({status:true,message:'veri silindi'})
         }
     });
-}
+}*/
